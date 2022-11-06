@@ -42,7 +42,7 @@ This is an api for a blog app
 
 ## Base URL
 
-- http://localhost:4000
+- https://bintma-blogging-api.onrender.com/
 
 ## Models
 
