@@ -13,7 +13,7 @@ const app = express();
 app.use(passport.initialize());
 app.use(express.json());
 app.use(express.urlencoded())
-// app.use(bodyparser.json())
+
 
 app.use("/", authRouter);
 app.use("/blogs", blogRoute)

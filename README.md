@@ -32,12 +32,12 @@ This is an api for a blog app
 16. Come up with any algorithm for calculating the reading_time of the blog.
 17. Write tests for all endpoints.
 
-## Setup
+## Execution
 
-- Install NodeJS, mongodb
-- pull this repo
-- update env with example.env
-- run `npm run start:dev`
+- Created folder and  files
+- Installed dependencies
+- Happy/Stressful Coding
+
 
 ---
 
@@ -51,29 +51,28 @@ This is an api for a blog app
 
 ### User
 
-| field     | data_type | constraints                                      |
-| --------- | --------- | ------------------------------------------------ |
-| id        | string    | required                                         |
-| username  | string    | required                                         |
-| firstname | string    | optional                                         |
-| lastname  | string    | optional                                         |
-| email     | string    | optional                                         |
-| password  | string    | required                                         |
-| user_type | string    | required, default: user, enum: ['user', 'admin'] |
+| field     | data_type | constraints                                      |whitespace
+| --------- | --------- | ------------------------------------------------ |----------------------------
+| email     | string    | required                                         | No
+| first_name| string    | required                                         | Yes
+| last_name | string    | required                                         | Yes
+| email     | string    | required                                         | Yes
+| password  | string    | required                                         | No
 
-### Order
 
-| field         | data_type | constraints                     |
-| ------------- | --------- | ------------------------------- |
-| id            | string    | required                        |
-| created_at    | date      | required                        |
-| state         | number    | required,default:1              |
-| total_price   | number    | required                        |
-| items         | array     | required                        |
-| item.name     | string    | required                        |
-| item.price    | number    | required                        |
-| item.size     | string    | required, enum: ['m', 's', 'l'] |
-| item.quantity | number    | required, enum: ['m', 's', 'l'] |
+
+### Blog
+
+| field      | data_type | constraints                                      |whitespace
+| ---------  | --------- | ------------------------------------------------ |----------------------------
+| title      | string    | required                                         | No
+| description| string    | required                                         | No
+| author_id  | string    | generated                                        | -
+| state      | string    | generated [enum: ["published", "draft"],default:"draft" ]                                        | -
+| body       | string    | required                                         | No
+| tags       | string    | optional                                         | -
+
+
 
 ## APIs
 
@@ -211,13 +210,6 @@ This is an api for a blog app
 - Method: GET
 - Header:
   - Authorization: Bearer {token}
-- Query params:
-  - page (default: 1)
-  - per_page (default: 10)
-  - order_by (default: created_at)
-  - order (options: asc | desc, default: desc)
-  - state
-  - created_at
 - Responses
 
 Success

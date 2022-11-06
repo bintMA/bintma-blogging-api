@@ -16,8 +16,6 @@ exports.createBlog = async function (req, res, next) {
     // console.log({...req.body, author: req.user._id })
     blogBody.reading_time = blogReadingTime();
     let newBlog = await  blogModel.create({ ...req.body,author_id:req.user._id })
-  //  newBlog.author = req.user._id
-  //  await newBlog.save()
    console.log(newBlog)
     return res.status(201).json({
       status: "success",
@@ -73,7 +71,7 @@ exports.getBlogById = async function (req, res, next) {
     console.log(Blog);
     if (!Blog) {
       res.status(404);
-      const error = new Error("No blog found with that ID");
+      const error = new Error("Can't find blog with this ID");
       return next(error);
     }
     Blog.read_count += 1;
@@ -92,11 +90,11 @@ exports.updateBlog = async function (req, res, next) {
     const blogToBeUpadated = await blogModel.findById(blogId);
     console.log(blogToBeUpadated)
     if (!blogToBeUpadated) {
-      return next(new Error("this is not your blog"));
+      return next(new Error("Sorry, this is not your blog"));
     }
     console.log(blogToBeUpadated.author_id,req.user._id)
     if (blogToBeUpadated.author_id.toString() !== req.user._id) {
-      return next(new Error("you are not authorized to upadate blog "));
+      return next(new Error("Sorry, you are not authorized to update this blog "));
     }
 
     const updatedBlog = await blogModel.findByIdAndUpdate(blogId, state, {
@@ -106,13 +104,13 @@ exports.updateBlog = async function (req, res, next) {
     console.log(updatedBlog);
     if (!updatedBlog) {
       res.status(404);
-      const error = new Error("No blog found with this ID");
+      const error = new Error("Can't find blog with this ID");
       next(error);
     }
       console.log(updatedBlog.author_id,req.user._id)
     if (updatedBlog.author_id.toString() !== req.user._id) {
       return next(
-        new Error("you are not Authorized to perform this operation")
+        new Error("Sorry, you are not authorized to update this blog")
       );
     }
     updatedBlog.state = state;
@@ -128,28 +126,21 @@ exports.deleteblog = async function (req, res, next) {
     const { blogId } = req.params;
     const blogToBeDeleted = await blogModel.findById(blogId);
     if (!blogToBeDeleted) {
-      return next(new Error("this is not your blog"));
+      return next(new Error("Sorry,this is not your blog"));
     }
     if (blogToBeDeleted.author_id.toString() !== req.user._id) {
-      return next(new Error("you are not authorized to delete blog "));
+      return next(new Error("Sorry, you are not authorized to delete this blog "));
     }
     const Blog = await blogModel.findByIdAndDelete(blogId);
     console.log(Blog);
     if (!Blog) {
       res.status(404);
-      const error = new Error("No blog found with that ID");
+      const error = new Error("Can't find blog with this ID");
       return next(error);
     }
-    return res.status(204).json({ messsge: "deletion succesful" });
+    return res.status(204).json({ messsge: "deleted successfully" });
   } catch (error) {
     next(error);
   }
 };
 
-
-// {
-//     "title":"my blog",
-//     "description":"my first blog",
-    // "tags": "tour"
-        // "body":"thank you for reading"
-// }

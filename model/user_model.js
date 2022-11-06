@@ -4,7 +4,6 @@ const Schema = mongoose.Schema;
 const ObjectId = Schema.ObjectId;
 
 const userSchema = new Schema({
-  // id: ObjectId,
   email: {
     type: String,
     lowercase: true,
@@ -32,20 +31,6 @@ const userSchema = new Schema({
     trim: true,
     require: [true, "kindly enter your password"],
   },
-  confirmPassword: {
-    type: String,
-    minLength: 2,
-    // require: true,
-    validate: {
-      validator: function (el) {
-        return el === this.password;
-      },
-      message: "Kindly enter a valid password",
-    },
-    trim: true,
-    require: [true, "please enter the correct  password"],
-  },
-
   createdAt: {
     type: Date,
     default: Date.now(),

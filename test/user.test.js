@@ -41,7 +41,6 @@ test("POST user",async()=>{
 
               userId = response.body.user._id;
               console.log(userId);
-            // console.log(response.body);
             expect(response.status).toBe(200);
             expect(response.body.message).toBe("Signup successfull");
             expect(response.body).toHaveProperty("user");
@@ -52,7 +51,6 @@ test("GET user",async()=>{
             const response = await supertest(app)
               .get("/users")
               .set("Authorization", `Bearer ${TEST_TOKEN}`);
-            // console.log(response.body);
             expect(response.status).toBe(200);
             expect(response.body.message).toBe("success");
 })

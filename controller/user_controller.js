@@ -23,7 +23,7 @@ exports.getUserById = async function (req, res, ) {
 
     return res.json({ status: true, user });
   } catch (error) {
-    return res.status(404).json({ message: "can't get user by id", error });
+    return res.status(404).json({ message: "Sorry, can't get user by id", error });
   }
 };
 
@@ -44,7 +44,7 @@ exports.updateUser = async function (req, res, ) {
 
     return res.json({ status: true });
   } catch (error) {
-   return res.status(404).json({ message: "user update unsuccessful", error });
+   return res.status(404).json({ message: "user update is unsuccessful", error });
   }
 };
 
@@ -66,19 +66,7 @@ exports.deleteUser = async function (req, res, ) {
 
     return res.json({ status: true });
   } catch (error) {
-   return res.status(404).json({ message: "user update unsuccessful", error });
+   return res.status(404).json({ message: "user update is unsuccessful", error });
   }
 };
 
-// exports.deleteUser = async function (req, res,) {
-//   try {
-//     console.log(req.params);
-//     const { userId } = req.params;
-// console.log(userId)
-//     const userToBeDeleted = userModel.findByIdAndDelete( userId);
-// console.log(userToBeDeleted)
-//     return res.json({ status: true, userToBeDeleted });
-//   } catch (error) {
-//    return res.status(401).json({ message: "user deletion failed", error });
-//   }
-// };
