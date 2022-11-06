@@ -34,10 +34,9 @@ This is an api for a blog app
 
 ## Execution
 
-- Created folder and  files
+- Created folder and files
 - Installed dependencies
 - Happy/Stressful Coding
-
 
 ---
 
@@ -51,28 +50,24 @@ This is an api for a blog app
 
 ### User
 
-| field     | data_type | constraints                                      |whitespace
-| --------- | --------- | ------------------------------------------------ |----------------------------
-| email     | string    | required                                         | No
-| first_name| string    | required                                         | Yes
-| last_name | string    | required                                         | Yes
-| email     | string    | required                                         | Yes
-| password  | string    | required                                         | No
-
-
+| field      | data_type | constraints | whitespace |
+| ---------- | --------- | ----------- | ---------- |
+| email      | string    | required    | No         |
+| first_name | string    | required    | Yes        |
+| last_name  | string    | required    | Yes        |
+| email      | string    | required    | Yes        |
+| password   | string    | required    | No         |
 
 ### Blog
 
-| field      | data_type | constraints                                      |whitespace
-| ---------  | --------- | ------------------------------------------------ |----------------------------
-| title      | string    | required                                         | No
-| description| string    | required                                         | No
-| author_id  | string    | generated                                        | -
-| state      | string    | generated [enum: ["published", "draft"],default:"draft" ]                                        | -
-| body       | string    | required                                         | No
-| tags       | string    | optional                                         | -
-
-
+| field       | data_type | constraints                                               | whitespace |
+| ----------- | --------- | --------------------------------------------------------- | ---------- |
+| title       | string    | required                                                  | No         |
+| description | string    | required                                                  | No         |
+| author_id   | string    | generated                                                 | -          |
+| state       | string    | generated [enum: ["published", "draft"],default:"draft" ] | -          |
+| body        | string    | required                                                  | No         |
+| tags        | string    | optional                                                  | -          |
 
 ## APIs
 
@@ -106,8 +101,6 @@ This is an api for a blog app
   },
   "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImVtYWlsIjoiYWRlb2xhQGdtYWlsLmNvbSIsImNyZWF0ZWRBdCI6IjIwMjItMTEtMDZUMTc6MzU6NTIuNTY3WiIsIl9pZCI6IjYzNjdmMTMzNzBlZWE4YTFhNzA1MDNkZSIsIl9fdiI6MH0sImlhdCI6MTY2Nzc1NjM0MH0.zsuWCyscLy76GXchH-pI5gj3bhLFUBEkff7NCkYKCLY"
 }
-
-
 ---
 
 ### Login User
@@ -191,7 +184,6 @@ This is an api for a blog app
   - Authorization: Bearer {token}
 - Responses
 
-
 ```
 
 {
@@ -206,7 +198,7 @@ This is an api for a blog app
 
 ### Get by Id
 
-- Route: /blogs/_id
+- Route: /blogs/\_id
 - Method: GET
 - Header:
   - Authorization: Bearer {token}
