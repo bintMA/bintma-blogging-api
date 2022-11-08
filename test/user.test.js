@@ -5,7 +5,7 @@ require("dotenv").config();
 const app = require("../app");
 const TEST_TOKEN = process.env.TEST_TOKEN;
 
-
+jest.setTimeout(40000);
 
 
 beforeAll((done) => {

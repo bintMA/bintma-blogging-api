@@ -30,7 +30,7 @@ passport.use(
 //sign token function
 const signToken = (user) => {
     return jwt.sign({ user }, process.env.JWT_SECRET, {
-      // expiresIn: process.env.EXPIRATION_TIME,
+      expiresIn: process.env.EXPIRATION_TIME,
     });
   };
   exports.signup = async function (req, res, next) {

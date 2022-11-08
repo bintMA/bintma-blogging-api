@@ -1,3 +1,4 @@
+const { JsonWebTokenError } = require("jsonwebtoken");
 const mongoose = require("mongoose");
 const supertest = require("supertest");
 require("dotenv").config();
@@ -6,7 +7,7 @@ const app = require("../app");
 const TEST_TOKEN = process.env.TEST_TOKEN;
 
 
-
+jest.setTimeout(40000);
 
 beforeAll((done) => {
   mongoose.connect(blog_test_url);
@@ -65,7 +66,7 @@ test("GET blog?id",async()=>{
       .get(`/blogs/${blogId}`)
       .set("Authorization", `Bearer ${TEST_TOKEN}`);
     expect(response.status).toBe(200);
-    expect(response.body.Blog).toHaveProperty("author");
+    expect(response.body).toHaveProperty("Blog");
 })
 
 
