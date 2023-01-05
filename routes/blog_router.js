@@ -1,6 +1,7 @@
 const express = require("express");
 const passport = require("passport");
-const blog_controller= require("../controller/blog_controller");
+const blogValidation = require("../validators/blogValidation");
+const blog_controller = require("../controller/blog_controller");
 
 const blogRoute = express.Router();
 
@@ -12,10 +13,11 @@ blogRoute.get(
 );
 blogRoute.get("/:blogId", blog_controller.getBlogById);
 blogRoute.post(
-    "/",
-    passport.authenticate("jwt", { session: false }),
-    blog_controller.createBlog
-  );
+  "/",
+  blogValidation,
+  passport.authenticate("jwt", { session: false }),
+  blog_controller.createBlog
+);
 blogRoute.patch(
   "/:blogId",
   passport.authenticate("jwt", { session: false }),
